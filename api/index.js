@@ -27,7 +27,7 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-app.use(cors({ credentials: true, origin: ['http://localhost:5173', 'http://localhost:5174'] }));
+app.use(cors({ credentials: true, origin: ['http://localhost:5173', 'http://localhost:5174', 'https://blog-six-rosy-89.vercel.app/'] }));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
