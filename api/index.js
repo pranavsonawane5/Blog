@@ -27,7 +27,7 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-app.use(cors({ credentials: true, origin: ['http://localhost:5173', 'http://localhost:5174', 'https://blog-six-rosy-89.vercel.app/'] }));
+app.use(cors({ credentials: true, origin: ['http://localhost:5173', 'http://localhost:5174', 'https://blog-six-rosy-89.vercel.app'] }));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
@@ -64,7 +64,11 @@ app.post('/login', async (req, res) => {
     if (passOk) {
       jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
         if (err) return res.status(500).json('Token generation failed');
-        res.cookie('token', token).json({
+        res.cookie('token', token,{
+          httpOnly: true,
+          secure: true,
+          sameSite: 'None',
+        }).json({
           id: userDoc._id,
           username,
         });
@@ -193,4 +197,8 @@ app.get('/post/:id', async (req, res) => {
   }
 });
 
-app.listen(4000, () => console.log('Server running on http://localhost:4000'));
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
