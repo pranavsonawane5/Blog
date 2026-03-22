@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Universal box-sizing */
+* {
+  box-sizing: content-box; /* Matches Medium's style */
+}
+
+a{
+  cursor: pointer;
+}
+
+/* Body with rich black and grey theme */
+body {
+  color: #1a1a1a; /* Rich black */
+  background-color: #ffffff; /* Crisp white */
+   /* Body font: clean & readable */
+  margin: 0;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+/* Main content area */
+main {
+  padding: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 80px; /* Adjusted for smaller header */
+}
+
+/* Sticky Header - Simple white background */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff; /* Changed to white */
+  color: #1a1a1a; /* Rich black text */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header a.logo {
+  font-family: 'Prata', sans-serif; /* Heading font */
+  font-weight: 700;
+  font-size: 1.6rem; /* Slightly smaller for cleaner look */
+  letter-spacing: 1.2px;
+}
+
+header nav {
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  font-family: 'Lato', sans-serif;
+  color: #333333; /* Deep grey */
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+header nav a:hover {
+  color: #d8d8d8; /* Silver */
+}
+
+/* Post layout (IndexPage - all posts) */
+div.post {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
+  background-color: #f9f9f9; /* Light grey */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+div.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 700px) {
+  div.post div.image {
+    min-height: 120px; /* Slightly bigger than before */
+    max-height: 180px;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  div.post {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+div.post div.image {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px; /* Bigger image for clarity */
+  height: auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+div.post div.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  aspect-ratio: 4 / 3;
+  flex-grow: 1;
+}
+
+div.post div.texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+div.post div.texts h2 {
+  margin: 0 0 10px 0;
+  font-family: 'Prata', sans-serif; /* Heading font */
+  font-size: 2rem; /* Slightly larger for distinction */
+  color: #1a1a1a;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+div.post div.texts a {
+  text-decoration: none;
+  color: inherit;
+}
+
+div.post p.info {
+  margin: 10px 0;
+  color: #888888;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  gap: 15px;
+}
+
+div.post p.info a.author {
+  color: #333333;
+}
+
+div.post p.info a.author:hover {
+  color: #d8d8d8;
+}
+
+div.post p.summary {
+  margin: 15px 0;
+  color: #242424; /* Medium's rich tone */
+  font-family: 'Raleway', 'sans-serif'; /* Body font */
+  font-size: 20px;
+  font-weight: 400; /* Regular weight to differentiate from heading */
+  line-height: 24px;
+  letter-spacing: normal;
+  width: 460.8px;
+  max-height: 96px;
+  height: 48px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; */
+  cursor: pointer;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-size-adjust: 100%;
+  unicode-bidi: isolate;
+  word-break: break-word;
+}
+
+/* Post page styles (specific post view) */
+div.post-page div.image {
+  display: flex;
+  width: 100%;
+  overflow: visible;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+div.post-page div.image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center center;
+}
+
+div.post-page a {
+  color: #333333;
+  text-decoration: underline;
+}
+
+div.post-page a:hover {
+  color: #d8d8d8;
+}
+
+div.post-page h1 {
+  text-align: center;
+  margin: 20px 0 15px;
+  color: #1a1a1a;
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+div.post-page time {
+  text-align: center;
+  display: block;
+  font-size: 1rem;
+  color: #888888;
+  font-style: italic;
+}
+
+div.post-page div.author {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+div.post-page div.content p {
+  line-height: 1.8rem;
+  color: #555555;
+}
+
+/* Edit row and button */
+div.edit-row {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+div.post-page a.edit-btn {
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+}
+
+div.post-page a.edit-btn:hover {
+  background: linear-gradient(135deg, #d8d8d8, #b0b0b0);
+  color: #1a1a1a;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(216, 216, 216, 0.3);
+  transform: translateY(-3px);
+}
+
+a svg {
+  height: 22px;
+  fill: currentColor;
+}
+
+/* Login and Register forms */
+form.login,
+form.register {
+  max-width: 420px;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  width: 93%;
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #1a1a1a;
+  font-size: 1.0rem;
+  font-family: 'Inter', sans-serif;
+}
+
+input:focus {
+  border-color: #d8d8d8;
+  outline: none;
+  box-shadow: 0 0 6px rgba(216, 216, 216, 0.3);
+}
+
+button {
+  width: 100%;
+  display: block;
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+  border: 0;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #333333, #4d4d4d);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+form.login h1,
+form.register h1 {
+  text-align: center;
+  color: #1a1a1a;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1px;
+} 
+
+/* TipTap Editor styles */
+.editor-container {
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #d0d0d0;
+  white-space: nowrap;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Simple toolbar buttons with full text visibility */
+.editor-container .toolbar button {
+  padding: 6px 12px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff !important; /* White background */
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  cursor: pointer;
+  min-width: 100px; /* Increased to fit "Ordered List" fully */
+  text-align: center; /* Center text */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.editor-container .toolbar button:hover {
+  background-color: #f5f5f5 !important; /* Very light grey for hover */
+  color: #1a1a1a !important; /* Black text */
+}
+
+.editor-container .toolbar button.is-active {
+  background-color: #555555 !important; /* Light grey for active */
+  color: #ececec !important; /* Black text */
+  border-color: #b0b0b0; /* Subtle border change */
+}
+
+.tiptap {
+  padding: 25px;
+  min-height: 250px;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #1a1a1a;
+  font-family: 'Inter', sans-serif;
+}
+
+.tiptap:focus {
+  outline: none;
+}
+
+.tiptap p {
+  margin: 0 0 15px 0;
+}
+
+.tiptap h1 {
+  font-size: 32px;
+  margin: 25px 0 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.tiptap h2 {
+  font-size: 26px;
+  margin: 20px 0 12px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.tiptap ul,
+.tiptap ol {
+  padding-left: 35px;
+  margin: 15px 0;
+}
+
+.tiptap li {
+  margin: 8px 0;
+}
+
+.tiptap strong {
+  font-weight: 700;
+}
+
+.tiptap em {
+  font-style: italic;
+}
+
+.tiptap u {
+  text-decoration: underline;
+}
+
+/* Simple Footer */
+footer {
+  background-color: #f9f9f9; /* Light grey */
+  padding: 20px;
+  text-align: center;
+  color: #555555; /* Medium grey */
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 40px;
+}
